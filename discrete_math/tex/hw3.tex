@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+
+\title{Discrete Mathematics HW3}
+\author{Kirill Korolev, DSBA 203-1}
+\date{30th of September 2020}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+\setcounter{enumi}{5}
+
+\item Suppose you are given with the following question when taking a multiple choice test:
+
+What percentage of answers to this question are correct?
+
+\begin{enumerate}
+\item 50\%
+\item 25\%
+\item 0\%
+\item 50\%
+\end{enumerate}
+
+Choosing (a) and (d) is correct because 2 / 4 answers are exactly 50\%. Also, choosing (b) will be correct, because 1 / 4 is 25\% of answers.
+
+\item Prove formally that $init(rev(init([student]))) = [nedut]$.
+
+\textbf{By definition of $init(s), \forall s \in S(A)$}
+
+\begin{align*}
+init([student]) = s : init([tudent]) = s : (t : init([udent])) = ... = s : (t : (u : (d : (e : (n : [])))))
+\end{align*}
+
+\textbf{By definition of $rev(s), \forall s \in S(A)$}
+
+\begin{align*}
+rev(init(student)) = rev(s : (t : (u : (d : (e : (n : [])))))) =\\
+app(rev(t : (u : (d : (e : (n : []))))), [s]) =\\ app(app(rev(u : (d : (e : (n : [])))), [t]), [s]) = ... = \\ = app(app(app(app(app(app([], [n]), [e]), [d]), [u]), [t]), [s]) 
+\end{align*}
+
+\textbf{Roll it down by definition of $app(s, t), \forall s, t \in S(A)$}
+\begin{align*}
+app(app(app(app(app(app([], [n]), [e]), [d]), [u]), [t]), [s]) =\\
+app(app(app(app(app([n], [e]), [d]), [u]), [t]), [s]) = \\
+app(app(app(app(n: app([], [e]), [d]), [u]), [t]), [s]) = \\
+app(app(app(app(n: [e], [d]), [u]), [t]), [s]) = ... = \\
+= n : (e : (d : (u : (t : (s : [])))))
+\end{align*}
+
+\textbf{Finally, after applying $init$}
+\begin{align*}
+init(n : (e : (d : (u : (t : (s : [])))))) =\\ n : init(e : (d : (u : (t : (s : []))))) = ... =\\ n : (e : (d : (u : (t : init([s]))))) =\\ n : (e : (d : (u : (t : [])))) = [nedut]
+\end{align*}
+
+\end{enumerate}
+
+\end{document}

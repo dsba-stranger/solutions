@@ -55,6 +55,51 @@ app(app(app(app(n: [e], [d]), [u]), [t]), [s]) = ... = \\
 init(n : (e : (d : (u : (t : (s : [])))))) =\\ n : init(e : (d : (u : (t : (s : []))))) = ... =\\ n : (e : (d : (u : (t : init([s]))))) =\\ n : (e : (d : (u : (t : [])))) = [nedut]
 \end{align*}
 
+\item Prove formally that for every $s, t \in S(A)$ the following statements hold:
+
+\begin{enumerate}
+\item $lh(s) = 0 \iff s = []$
+
+If $s = []$, then by definition of length function $lh([]) = 0$.
+
+If $lh(s) = 0$, suppose $s = x : s ^ \prime$. Then by definition $lh(x : s ^ \prime) = 1 + lh(s ^ \prime) \neq 0$, which contradicts with former condition. Hence $s = []$.
+
+\item $lh(app(s, t)) = lh(s) + lh(t)$
+
+Proof by induction.
+
+\paragraph{Base $s = []$:}
+$lh(app([], t)) = lh(t) = lh([]) + lh(t) = lh(s) + lh(t)$
+
+\paragraph{Inductive step:}
+$lh(app(x : s, t)) = lh(x : app(s, t)) = 1 + lh(app(s, t)) = 1 + lh(s) + lh(t) = lh(x : s) + lh(t)$
+
+\item $lh(rev(s)) = lh(s)$
+
+To prove this let's use statement (b). Proof by induction.
+
+\paragraph{Base $s = []$:}
+$lh(rev([])) = lh([]) = 0 = lh([]) = lh(s)$
+
+\paragraph{Inductive step:}
+$lh(rev(x : s)) = lh(app(rev(s), [x])) = lh(rev(s)) + lh([x]) = lh(s) + lh([x]) = lh(s) + 1 + lh([]) = lh(s) + 1 = lh(x : s)$
+
+\end{enumerate}
+
+\item Prove that $app(t, s) = app(r, s)$ implies $t = r$ for every $s, t, r \in S(A)$:
+
+In proof I'm going to use lemmas proved in seminars.
+
+\[app(t, s) = rev(rev(app(t, s)) = rev(app(rev(s), rev(t)))\]
+\[app(r, s) = rev(rev(app(r, s)) = rev(app(rev(s), rev(r)))\]
+
+The final step in order to use lemma, which implies the same as the statement which is being proved but for second argument, is to prove that $rev(s) = rev(t)$ implies $s = t$.
+
+Let's prove this additional statement by induction.
+
+\paragraph{Base:} $rev(s) = rev([]) = [] = rev(t) = []$
+\paragraph{Inductive step:} $rev(x : s) = $ 
+
 \end{enumerate}
 
 \end{document}

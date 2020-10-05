@@ -37,7 +37,7 @@ init([student]) = s : init([tudent]) =\\ s : (t : init([udent])) = ... =\\ s : (
 \textbf{By definition of $rev(s), \forall s \in S(A)$}
 
 \begin{align*}
-rev(init(student)) = rev(s : (t : (u : (d : (e : (n : [])))))) =\\
+rev(init([student])) = rev(s : (t : (u : (d : (e : (n : [])))))) =\\
 app(rev(t : (u : (d : (e : (n : []))))), [s]) =\\ app(app(rev(u : (d : (e : (n : [])))), [t]), [s]) = ... = \\ = app(app(app(app(app(app([], [n]), [e]), [d]), [u]), [t]), [s]) 
 \end{align*}
 

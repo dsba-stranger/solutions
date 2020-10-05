@@ -24,7 +24,7 @@ What percentage of answers to this question are correct?
 \item 50\%
 \end{enumerate}
 
-Choosing (a) and (d) is correct because 2 / 4 answers are exactly 50\%. Also, choosing (b) will be correct, because 1 / 4 is 25\% of answers. All other options are incorrect.
+Choosing (a) and (d) is correct because 2 / 4 answers are exactly 50\%. Also, choosing (b) will be correct, because 1 / 4 is 25\% of answers. All other options are incorrect. Choosing only (a) or (d) cannot be true because it is only 25\% of answers. Choosing (c) is self-explanatory, because if we choose something, it cannot be 0\%. Other combinations contradict with each other.
 
 \item Prove formally that $init(rev(init([student]))) = [nedut]$.
 
@@ -56,6 +56,8 @@ init(n : (e : (d : (u : (t : (s : [])))))) =\\ n : init(e : (d : (u : (t : (s : 
 \end{align*}
 
 \item Prove formally that for every $s, t \in S(A)$ the following statements hold:
+
+$\forall x \in A$ and $\forall s, t \in S(A)$
 
 \begin{enumerate}
 \item $lh(s) = 0 \iff s = []$
@@ -93,7 +95,8 @@ In proof I'm going to use lemmas proved in seminars.
 
 \begin{align*}
 &app(rev(s), rev(t)) \stackrel{cw1 \: 16(a)}{=} rev(app(t, s)) = rev(app(r, s)) \stackrel{cw1 \: 16(a)}{=} app(rev(s), rev(r))\\
-&app(rev(s), rev(t)) = app(rev(s), rev(r)) \to rev(t) = rev(r) \:\:\:(cw1 \: 15)
+&app(rev(s), rev(t)) = app(rev(s), rev(r)) \to rev(t) = rev(r) \:\:\:(cw1 \: 15)\\
+&t \stackrel{cw1 \: 16(b)}{=} rev(rev(t)) = rev(rev(r)) \stackrel{cw1 \: 16(b)}{=} r
 \end{align*}
 
 \end{enumerate}

@@ -91,18 +91,10 @@ $lh(rev(x : s)) \stackrel{rev2}{=} lh(app(rev(s), [x])) \stackrel{(b)}{=} lh(rev
 
 In proof I'm going to use lemmas proved in seminars.
 
-\[app(t, s) \stackrel{cw1 \: 16(b)}{=} rev(rev(app(t, s)) \stackrel{cw1 \: 16(a)}{=} rev(app(rev(s), rev(t)))\]
-
-The same reasoning valid for $app(r, s)$
-
-\[app(r, s) = rev(rev(app(r, s)) = rev(app(rev(s), rev(r)))\]
-
-The final step in order to use lemma $app(s, t) = app(s, r) \to (t = r)$, is to prove that $rev(s) = rev(t) \to (s = t)$.
-
-Let's prove this additional statement by induction.
-
-\paragraph{Base:} $rev(s) = rev([]) \stackrel{rev1}{=} [] = rev(t) = []$
-\paragraph{Inductive step:} $rev(x : s) \stackrel{rev2}{=} app(rev(s), [x]) = $
+\begin{align*}
+&app(rev(s), rev(t)) \stackrel{cw1 \: 16(a)}{=} rev(app(t, s)) = rev(app(r, s)) \stackrel{cw1 \: 16(a)}{=} app(rev(s), rev(r))\\
+&app(rev(s), rev(t)) = app(rev(s), rev(r)) \to rev(t) = rev(r) \:\:\:(cw1 \: 15)
+\end{align*}
 
 \end{enumerate}
 

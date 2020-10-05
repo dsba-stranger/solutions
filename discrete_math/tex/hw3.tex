@@ -24,14 +24,14 @@ What percentage of answers to this question are correct?
 \item 50\%
 \end{enumerate}
 
-Choosing (a) and (d) is correct because 2 / 4 answers are exactly 50\%. Also, choosing (b) will be correct, because 1 / 4 is 25\% of answers.
+Choosing (a) and (d) is correct because 2 / 4 answers are exactly 50\%. Also, choosing (b) will be correct, because 1 / 4 is 25\% of answers. All other options are incorrect.
 
 \item Prove formally that $init(rev(init([student]))) = [nedut]$.
 
 \textbf{By definition of $init(s), \forall s \in S(A)$}
 
 \begin{align*}
-init([student]) = s : init([tudent]) = s : (t : init([udent])) = ... = s : (t : (u : (d : (e : (n : [])))))
+init([student]) = s : init([tudent]) =\\ s : (t : init([udent])) = ... =\\ s : (t : (u : (d : (e : (n : init([t])))))) = s : (t : (u : (d : (e : (n : [])))))
 \end{align*}
 
 \textbf{By definition of $rev(s), \forall s \in S(A)$}
@@ -69,36 +69,40 @@ If $lh(s) = 0$, suppose $s = x : s ^ \prime$. Then by definition $lh(x : s ^ \pr
 Proof by induction.
 
 \paragraph{Base $s = []$:}
-$lh(app([], t)) = lh(t) = lh([]) + lh(t) = lh(s) + lh(t)$
+$lh(app([], t)) \stackrel{app1}{=} lh(t) \stackrel{lh1}{=} lh([]) + lh(t) = lh(s) + lh(t)$
 
 \paragraph{Inductive step:}
-$lh(app(x : s, t)) = lh(x : app(s, t)) = 1 + lh(app(s, t)) = 1 + lh(s) + lh(t) = lh(x : s) + lh(t)$
+$lh(app(x : s, t)) \stackrel{app2}{=} lh(x : app(s, t)) \stackrel{lh2}{=} 1 + lh(app(s, t)) \stackrel{ind. hyp}{=} 1 + lh(s) + lh(t) \stackrel{lh2}{=} lh(x : s) + lh(t)$
 
 \item $lh(rev(s)) = lh(s)$
 
 To prove this let's use statement (b). Proof by induction.
 
 \paragraph{Base $s = []$:}
-$lh(rev([])) = lh([]) = 0 = lh([]) = lh(s)$
+$lh(rev([])) \stackrel{rev1}{=} lh([]) \stackrel{lh1}{=} 0 = lh([]) = lh(s)$
 
 \paragraph{Inductive step:}
-$lh(rev(x : s)) = lh(app(rev(s), [x])) = lh(rev(s)) + lh([x]) = lh(s) + lh([x]) = lh(s) + 1 + lh([]) = lh(s) + 1 = lh(x : s)$
+$lh(rev(x : s)) \stackrel{rev2}{=} lh(app(rev(s), [x])) \stackrel{(b)}{=} lh(rev(s)) + lh([x]) \stackrel{ind. hyp}{=} lh(s) + lh([x]) = lh([x]) + lh(s) \stackrel{(b)}{=} lh(app([x], s)) \stackrel{app2}{=} lh(x : app([], s)) \stackrel{app1}{=} lh(x : s)$
 
 \end{enumerate}
+\newpage
 
 \item Prove that $app(t, s) = app(r, s)$ implies $t = r$ for every $s, t, r \in S(A)$:
 
 In proof I'm going to use lemmas proved in seminars.
 
-\[app(t, s) = rev(rev(app(t, s)) = rev(app(rev(s), rev(t)))\]
+\[app(t, s) \stackrel{cw1 \: 16(b)}{=} rev(rev(app(t, s)) \stackrel{cw1 \: 16(a)}{=} rev(app(rev(s), rev(t)))\]
+
+The same reasoning valid for $app(r, s)$
+
 \[app(r, s) = rev(rev(app(r, s)) = rev(app(rev(s), rev(r)))\]
 
-The final step in order to use lemma, which implies the same as the statement which is being proved but for second argument, is to prove that $rev(s) = rev(t)$ implies $s = t$.
+The final step in order to use lemma $app(s, t) = app(s, r) \to (t = r)$, is to prove that $rev(s) = rev(t) \to (s = t)$.
 
 Let's prove this additional statement by induction.
 
-\paragraph{Base:} $rev(s) = rev([]) = [] = rev(t) = []$
-\paragraph{Inductive step:} $rev(x : s) = $ 
+\paragraph{Base:} $rev(s) = rev([]) \stackrel{rev1}{=} [] = rev(t) = []$
+\paragraph{Inductive step:} $rev(x : s) \stackrel{rev2}{=} app(rev(s), [x]) = $
 
 \end{enumerate}
 

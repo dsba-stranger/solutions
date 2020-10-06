@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\title{DSBA Linear Algebra HW3}
+\author{Kirill Korolev, 203-1}
+\date{6th of October, 2020}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+
+\item Which of the following matrices are in reduced row echelon form, and which are not?
+
+\begin{enumerate}
+
+\item $\begin{tikzpicture}[baseline]
+\matrix[
+    matrix of math nodes, 
+    minimum size=16pt,
+    row sep=2pt,
+    column sep=2pt,
+    left delimiter=(,
+    right delimiter=), 
+    inner xsep=0pt
+    ]{
+	|[draw, circle, fill=green]|1 & 2 & 0 & 1\\
+	0 & 0 & |[draw, circle, fill=green]|1 & 1\\
+	0 & 0 & 0 & 0\\
+    };
+\end{tikzpicture}$
+
+All conditions of RREF are satisfied.
+
+\item $\begin{tikzpicture}[baseline]
+\matrix[
+    matrix of math nodes, 
+    minimum size=16pt,
+    row sep=2pt,
+    column sep=2pt,
+    left delimiter=(,
+    right delimiter=), 
+    inner xsep=0pt
+    ]{
+	1 & 1 & 0 & 0\\
+	0 & 0 & |[draw, circle, fill=red]|1 & 0\\
+	0 & 0 & |[draw, circle, fill=red]|1 & 1\\
+    };
+\end{tikzpicture}$ 
+
+Leading elements should be to the right of the previous ones, namely if $a_{ij}$ and $a_{kl}$ are leading elements where $i < k$ then $j < l$. Or we can say that column with pivot element contains another non-zero element.
+
+\item $\begin{tikzpicture}[baseline]
+\matrix[
+    matrix of math nodes, 
+    minimum size=16pt,
+    row sep=2pt,
+    column sep=2pt,
+    left delimiter=(,
+    right delimiter=), 
+    inner xsep=0pt
+    ]{
+	0 & 0 & 1 & 0 & 0\\
+	0 & 0 & 0 & |[draw,circle,fill=red]|2 & 0\\
+	0 & 0 & 0 & 0 & 1\\
+    };
+\end{tikzpicture}$ 
+
+Pivot element is not equal to one.
+
+\item $\begin{tikzpicture}[baseline]
+\matrix[
+    matrix of math nodes, 
+    minimum size=16pt,
+    row sep=2pt,
+    column sep=2pt,
+    left delimiter=(,
+    right delimiter=), 
+    inner xsep=0pt
+    ]{
+	0 & 1 & 1 & 0 & 0\\
+	0 & 0 & 0 & 1 & 0\\
+	|[draw,circle,fill=red	1 & 0 & 0 & 0 & 1\\]|1 & 0 & 0 & 0 & 1\\
+	0 & 0 & 0 & 0 & 0\\
+    };
+\end{tikzpicture}$ 
+
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
+

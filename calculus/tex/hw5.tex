@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amssymb}
 \usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{pgfplots}
 
 \title{DSBA Calculus HW5}
 \author{Kirill Korolev, 203-1}
@@ -15,13 +17,19 @@
 	\item Find the domain and the range for the following functions:
 	
 	\begin{align*}
-	f(x) = \sqrt{2 + x - x^2}\\
-	D(f) = \{x \in \mathbb{R} \:|\: 2 + x - x^2 \geq 0\}\\
-	x_1, x_2 = \frac{-1 \pm \sqrt{1 - 4 \cdot 2 \cdot (-1)}}{-2} = \frac{-1 \pm 3}{-2} = 2; -1\\
-	-(x + 1)(x - 2) \geq 0\\
-	(x + 1)(x - 2) \leq 0\\
-	x \in [-1; 2]
+	&f(x) = \sqrt{2 + x - x^2}\\
+	&D(f) = \{x \in \mathbb{R} \:|\: 2 + x - x^2 \geq 0\}\\
+	&x_1, x_2 = \frac{-1 \pm \sqrt{1 - 4 \cdot 2 \cdot (-1)}}{-2} = \frac{-1 \pm 3}{-2} = 2; -1\\
+	&-(x + 1)(x - 2) \geq 0\\
+	&(x + 1)(x - 2) \leq 0\\
+	&x \in [-1; 2]
 	\end{align*}
+	
+\begin{tikzpicture}
+\begin{axis}
+\addplot[smooth,samples=200,domain=-5:5]{sqrt(2 + x - x^2)};
+\end{axis}
+\end{tikzpicture}		
 	
 	\begin{center}
 		In $y = 2 + x - x^2$ branches are directed downwards. It reaches maximum at $x_0 = \frac{1}{2} \Rightarrow y_0 = \frac{9}{4} \Rightarrow f(x) \leq \sqrt{\frac{9}{4}} = \frac{3}{2}$\\
@@ -36,11 +44,30 @@
 	\end{cases*}
 	\end{equation*}
 	
+\begin{tikzpicture}
+\begin{axis}
+\addplot[smooth,samples=200,domain=-3:-1]{x + 1};
+\addplot[smooth,samples=200,domain=-1:5]{2 - x^2};
+\end{axis}
+\end{tikzpicture}	
+	
 	There is no limitations on functions defined on these intervals except that $y = x + 1$ starts from -3, so domain of f(x) is $[-3; +\infty)$. Linear function is less than 0 on $-3 \leq x < -1$ and monotone increases. Parabola has branches directed downwards, so the maximum will be at $f(0) = 2$. Despite the gap between these functions at $x = -1$, the right branch of parabola tends to minus infinity, so the range is $(-\infty, 2]$
 
 \item Use the $\epsilon-\delta$ definition of limit to prove that $\lim_{x \to 9} \sqrt{x} = 3$. Find such $\delta$ such that $|\sqrt{x} - 3| < 0.01$ whenever $0 < |x - 9| < \delta$
 
-//TODO
+\begin{align*}
+\forall \epsilon > 0, \exists \delta > 0: \forall x \quad 0 < |x - 9| < \delta \quad \Rightarrow \quad |\sqrt{x} - 3| < \epsilon\\
+|\sqrt{x} - 3| = \frac{|x - 9|}{\sqrt{x} + 3} < \frac{\delta}{\sqrt{x} + 3} < \epsilon\\
+\forall x, \sqrt{x} + 3 \geq 3 \Rightarrow \delta < (\sqrt{x} + 3) \cdot \epsilon
+\end{align*}
+So we can take $\delta = \epsilon$
+
+\begin{align*}
+&|\sqrt{x} - 3| < 0.01\\
+&3 - 0.01 < \sqrt{x} < 3 + 0.01\\
+&9 - 6 \cdot 0.01 + 0.01 ^ 2 < x < 9 + 6 \cdot 0.01 + 0.01 ^ 2
+\end{align*}
+If we take $\delta = 0.01 ^ 2$, then $9 - 0.01 ^ 2 < x < 9 + 0.01 ^ 2$, which satisfies the upper inequality.
 
 \item Find the following limits:
 

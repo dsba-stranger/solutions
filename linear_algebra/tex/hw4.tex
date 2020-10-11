@@ -1,0 +1,160 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\usepackage{mathtools}
+
+\title{DSBA Linear Algebra HW4}
+\author{Kirill Korolev 203-1}
+\date{10th of October, 2020}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+
+\item Solve the following system:
+
+\begin{align*}
+&\begin{bmatrix}[ccccc|c]
+6 & 4 & 5 & 2 & 3 & 1\\
+9 & 6 & 1 & 3 & 2 & 2\\
+3 & 2 & -2 & 1 & 0 & -7\\
+3 & 2 & 4 & 1 & 2 & 3
+\end{bmatrix}
+\to
+\begin{bmatrix}[ccccc|c]
+3 & 2 & 4 & 1 & 2 & 3\\
+6 & 4 & 5 & 2 & 3 & 1\\
+9 & 6 & 1 & 3 & 2 & 2\\
+3 & 2 & -2 & 1 & 0 & -7\\
+\end{bmatrix}
+\to
+\begin{bmatrix}[ccccc|c]
+3 & 2 & 4 & 1 & 2 & 3\\
+0 & 0 & -3 & 0 & -1 & -5\\
+0 & 0 & -11 & 0 & -4 & -7\\
+0 & 0 & -6 & 0 & -2 & -10
+\end{bmatrix}
+\to\\
+&\begin{bmatrix}[ccccc|c]
+3 & 2 & 4 & 1 & 2 & 3\\
+0 & 0 & -3 & 0 & -1 & -5\\
+0 & 0 & -11 & 0 & -4 & -7\\
+0 & 0 & 0 & 0 & 0 & 0
+\end{bmatrix}
+\to
+\begin{bmatrix}[ccccc|c]
+3 & 2 & 4 & 1 & 2 & 3\\
+0 & 0 & -3 & 0 & -1 & -5\\
+0 & 0 & 0 & 0 & -\frac{1}{3} & -\frac{34}{3}\\
+0 & 0 & 0 & 0 & 0 & 0
+\end{bmatrix}\\
+&\begin{cases}
+x_5 = 34\\
+x_3 = \frac{5}{3} - \frac{34}{3} = -\frac{29}{3}\\
+x_1 = 1 - 34 \cdot \frac{2}{3} - \frac{x_4}{3} + \frac{29}{3} \cdot \frac{4}{3} - \frac{2x_2}{3}
+\end{cases}
+\end{align*}
+
+\item Solve the following system with a parameter:
+
+\item Find a polynomial $f(x) = ax^3 + bx^2 + cx + d$ such that
+
+\[f(-2) = -1, f(-1) = 2, f(1) = 14, f(2) = 35\]
+
+We can rewrite it as system of equations with unknowns $a, b, c, d$:
+\begin{align*}
+&\begin{bmatrix}[cccc|c]
+-8 & 4 & -2 & \lambda & -1\\
+-1 & 1 & -1 & \lambda & 2\\
+1 & 1 & 1 & \lambda & 14\\
+8 & 4 & 2 & \lambda & 35
+\end{bmatrix}
+\to
+\begin{bmatrix}[cccc|c]
+1 & 1 & 1 & \lambda & 14\\
+-8 & 4 & -2 & \lambda & -1\\
+-1 & 1 & -1 & \lambda & 2\\
+8 & 4 & 2 & \lambda & 35
+\end{bmatrix}
+\to
+\begin{bmatrix}[cccc|c]
+1 & 1 & 1 & \lambda & 14\\
+0 & 8 & 0 & 2\lambda & 34\\
+0 & 2 & 0 & 2\lambda & 16\\
+8 & 4 & 2 & \lambda & 35
+\end{bmatrix}
+\to\\
+&\begin{bmatrix}[cccc|c]
+1 & 1 & 1 & \lambda & 14\\
+0 & 1 & 0 & \lambda & 8\\
+0 & 4 & 0 & \lambda & 17\\
+0 & -4 & -6 & -7\lambda & -77
+\end{bmatrix}
+\to
+\begin{bmatrix}[cccc|c]
+1 & 1 & 1 & \lambda & 14\\
+0 & 1 & 0 & \lambda & 8\\
+0 & 0 & 0 & -3\lambda & -15\\
+0 & 0 & -6 & -6\lambda & -60
+\end{bmatrix}
+\to
+\begin{bmatrix}[cccc|c]
+1 & 1 & 1 & \lambda & 14\\
+0 & 1 & 0 & \lambda & 8\\
+0 & 0 & 1 & \lambda & 10\\
+0 & 0 & 0 & \lambda & 5\\
+\end{bmatrix}
+\end{align*}
+
+\begin{align*}
+\lambda = 5 \Rightarrow d = 5\\
+c + 5 = 10 \Rightarrow c = 5\\
+b + 5 = 8 \Rightarrow b = 3\\
+a + 3 + 5 + 5 = 14 \Rightarrow a = 1\\
+\end{align*}
+Hence the polynomial will be in a form of:
+\[f(x) = x^3 + 3x^2 + 5x + 5\]
+
+
+
+\item Find numbers $a, b, c \in \mathbb{R}$ such that the following equality holds true:
+
+\begin{align*}
+\frac{x(5+x)}{(1-x)(2+x^2)} = \frac{a}{1-x} + \frac{b + cx}{2+x^2}\\
+x(5+x) = a(2+x^2) + (b + cx)(1 - x)\\
+x^2 + 5x = (a - c)x^2 + (c - b)x + 2a + b
+\end{align*}
+Coefficients of members with same powers should be equal, therefore:
+
+\begin{align*}
+\begin{cases}
+a - c = 1\\
+c - b = 5\\
+2a + b = 0
+\end{cases} 
+\iff
+\begin{cases}
+-\frac{b}{2} - b - 5 = 1\\
+c = b + 5\\
+a = -\frac{b}{2}
+\end{cases}
+\iff
+\begin{cases}
+b = -4\\
+c = 1\\
+a = 2
+\end{cases}
+\end{align*}
+
+Indeed $2(2 + x^2) + (x - 4)(1 - x) = 4 + 2x^2 + x - x^2 - 4 + 4x = x^2 + 5x = x(5+x)$
+
+\end{enumerate}
+
+\end{document}

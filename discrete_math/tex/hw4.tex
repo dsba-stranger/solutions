@@ -25,14 +25,20 @@ IS.& \quad \sum_{k=1}^{n + 1} k^2 = \underbrace{\frac{n(n+1)(2n+1)}{6}}_{ind. hy
 
 \item In some country, there are finitely many cities, each two of which are connected by a one-way road. Prove that there is a city from which any other is accessible.
 
-\textbf{Proof by induction.} Denote $P(n)$ as statement: there is a city among set $C_n$ of $n$ cities from each any other is accessible. Also, denote $P(x, y)$ as path from $x$ to $y$ and $R(x, y)$ as one-way road from $x$ to $y$.
+Let $C_n$ will be a set of $n$ cities. Denote $P(x, y)$ as path from $x$ to $y$ and $R(x, y)$ as one-way road from $x$ to $y$, where $x, y \in C_n$. 
 
-For $n = 2$ the statement is obvious. Suppose that statement is valid for $n$ cities. So there is a city $x_0$ with path to other $n - 1$ cities:
-\[\exists x_0 \in C_n : \forall c \in C_n \quad P(x_0, c) \]
+$P(x, y) = \exists \{z_i\} : R(x, z_1) \land R(z_1, z_2) \land ... \land R(z_m, y) \quad z_i \in C_n, \: m \in \mathbb{N}$.
 
-Also by condition $\forall x, y \in C_n \quad R(x, y) \lor R(y, x)$ 
+Then we need to prove $A(n) = \exists x \in C_n : \forall y \in C_n \: P(x, y)$
 
-Let's add another city $y_0$. Then by condition $y_0$ also connected with other $n$ cities. There are two cases.
+Also, by condition holds $\forall x, y \in C_n \quad R(x, y) \lor R(y, x)$
+
+
+\textbf{Proof by induction on $A(n)$.}
+$A(2)$ is obvious by condition. Suppose that statement is valid for $A(n)$. So there is a city $x_0$ with path to other $n - 1$ cities:
+\[\exists x_0 \in C_n : \forall y \in C_n \quad P(x_0, y) \]
+
+Let's add another city $y_0$. Then by condition $y_0$ is also connected with other $n$ cities. There are two cases.
 
 \paragraph{Case 1}
 $\exists z \in C_n \: (P(x_0, z) \land R(z, y_0)) \to P(x_0, y_0) \Rightarrow x_0 $ is the source city. 
@@ -46,8 +52,12 @@ Therefore, the statement has been proved.
 \paragraph{Proof by induction.}
 \begin{align*}
 &IB. \quad 1 \geq 1\\
-&IS. \quad 
+&\Delta_{k,m} = \frac{1}{k+1} + ... + \frac{1}{k+m} \quad k, m \in \mathbb{N}\\
+&IS. \quad 1 + \frac{1}{2} + ... + \frac{1}{k} + \Delta_{k,m} \geq n + \Delta_{k,m} \geq n + 1 \Rightarrow \Delta_{k,m} \geq 1
 \end{align*}
+
+If we take $m = k$ then:
+\[\frac{1}{k+1} + ... + \frac{1}{2k} \geq 2k \cdot \frac{1}{2k} = 1\]
 
 \end{enumerate}
 

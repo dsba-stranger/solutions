@@ -52,18 +52,97 @@
 \begin{bmatrix}[ccccc|c]
 3 & 2 & 4 & 1 & 2 & 3\\
 0 & 0 & -3 & 0 & -1 & -5\\
-0 & 0 & 0 & 0 & -\frac{1}{3} & -\frac{34}{3}\\
+0 & 0 & 0 & 0 & -\frac{1}{3} & \frac{34}{3}\\
 0 & 0 & 0 & 0 & 0 & 0
 \end{bmatrix}\\
 &\begin{cases}
-x_5 = 34\\
-x_3 = \frac{5}{3} - \frac{34}{3} = -\frac{29}{3}\\
-x_1 = 1 - 34 \cdot \frac{2}{3} - \frac{x_4}{3} + \frac{29}{3} \cdot \frac{4}{3} - \frac{2x_2}{3}
-\end{cases}
+x_5 = -34\\
+x_3 = \frac{5}{3} + \frac{34}{3} = 13\\
+x_1 = 1 + 34 \cdot \frac{2}{3} - \frac{x_4}{3} - 13 \cdot \frac{4}{3} - \frac{2x_2}{3} = \frac{19}{3} - \frac{2x_2}{3} - \frac{x_4}{3}
+\end{cases}\\
+&X = \begin{bmatrix}
+\frac{19}{3} - \frac{2c_1}{3} - \frac{c_2}{3}\\c_1\\13\\c_2\\-34
+\end{bmatrix} \quad \forall c_1, c_2 \in \mathbb{R}
 \end{align*}
 
+\newpage
 \item Solve the following system with a parameter:
 
+\begin{align*}
+&\begin{bmatrix}[cccc|c]
+\lambda & 1 & 1 & 1 & 1\\
+1 & \lambda & 1 & 1 & 1\\
+1 & 1 & \lambda & 1 & 1\\
+1 & 1 & 1 & \lambda & 1\\
+\end{bmatrix}
+\to
+\begin{bmatrix}[cccc|c]
+1 & 1 & 1 & \lambda & 1\\
+1 & 1 & \lambda & 1 & 1\\
+1 & \lambda & 1 & 1 & 1\\
+\lambda & 1 & 1 & 1 & 1\\
+\end{bmatrix}
+\to
+\begin{bmatrix}[cccc|c]
+1 & 1 & 1 & \lambda & 1\\
+0 & 0 & \lambda - 1 & 1 - \lambda & 0\\
+0 & \lambda - 1 & 0 & 1 -\lambda  & 0\\
+0 & 1 - \lambda & 1 - \lambda & 1 -\lambda^2 & 1-\lambda\\
+\end{bmatrix}
+\to\\
+&\begin{bmatrix}[cccc|c]
+1 & 1 & 1 & \lambda & 1\\
+0 & 0 & \lambda - 1 & 1 - \lambda & 0\\
+0 & \lambda - 1 & 0 & 1 -\lambda  & 0\\
+0 & 0 & 1 - \lambda & 2 - \lambda - \lambda^2 & 1-\lambda\\
+\end{bmatrix}
+\to
+\begin{bmatrix}[cccc|c]
+1 & 1 & 1 & \lambda & 1\\
+0 & 1 & 0 & -1 & 0\\
+0 & 0 & 1 & -1 & 0\\
+0 & 0 & 1 - \lambda & 2 - \lambda - \lambda^2 & 1-\lambda\\
+\end{bmatrix}
+\to\\
+&\begin{bmatrix}[cccc|c]
+1 & 1 & 1 & \lambda & 1\\
+0 & 1 & 0 & -1 & 0\\
+0 & 0 & 1 & -1 & 0\\
+0 & 0 & 0 & 3 - 2\lambda - \lambda^2 & 1-\lambda\\
+\end{bmatrix}\\
+\end{align*}
+
+If $(\lambda + 3)(\lambda - 1) \neq 0$:
+\begin{align*}
+&\begin{cases}
+x_1 + x_2 + x_3 + \lambda x_4 = 1\\
+x_2 - x_4 = 0\\
+x_3 - x_4 = 0\\
+-(\lambda + 3)(\lambda - 1) x_4 = 1-\lambda
+\end{cases}
+\iff
+\begin{cases}
+x_1 = 1 - \frac{2 + \lambda}{\lambda + 3} = \frac{1}{\lambda + 3}\\
+x_2 = x_3 = x_4\\
+x_4 = \frac{1}{\lambda + 3}
+\end{cases}\\
+&X = \begin{bmatrix}
+\frac{1}{\lambda + 3}\\\frac{1}{\lambda + 3}\\\frac{1}{\lambda + 3}\\\frac{1}{\lambda + 3}
+\end{bmatrix}
+\end{align*}
+If $\lambda = 1$:
+\begin{align*}
+&\begin{cases}
+x_1 = 1 - 3c\\
+x_2 = x_3 = x_4 = c \quad c \in \mathbb{R}
+\end{cases}\\
+&X = \begin{bmatrix}
+1 - 3c\\c\\c\\c
+\end{bmatrix} \quad \forall c \in \mathbb{R}
+\end{align*}
+If $\lambda = -3$ there are no solutions.
+
+\newpage
 \item Find a polynomial $f(x) = ax^3 + bx^2 + cx + d$ such that
 
 \[f(-2) = -1, f(-1) = 2, f(1) = 14, f(2) = 35\]
@@ -101,11 +180,18 @@ We can rewrite it as system of equations with unknowns $a, b, c, d$:
 \begin{bmatrix}[cccc|c]
 1 & 1 & 1 & \lambda & 14\\
 0 & 1 & 0 & \lambda & 8\\
-0 & 0 & 0 & -3\lambda & -15\\
+0 & 4 & 0 & \lambda & 17\\
 0 & 0 & -6 & -6\lambda & -60
 \end{bmatrix}
 \to
 \begin{bmatrix}[cccc|c]
+1 & 1 & 1 & \lambda & 14\\
+0 & 1 & 0 & \lambda & 8\\
+0 & 0 & 0 & -3\lambda & -15\\
+0 & 0 & -6 & -6\lambda & -60
+\end{bmatrix}
+\to\\
+&\begin{bmatrix}[cccc|c]
 1 & 1 & 1 & \lambda & 14\\
 0 & 1 & 0 & \lambda & 8\\
 0 & 0 & 1 & \lambda & 10\\

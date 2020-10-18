@@ -56,8 +56,15 @@ Therefore, the statement has been proved.
 &IS. \quad 1 + \frac{1}{2} + ... + \frac{1}{k} + \Delta_{k,m} \geq n + \Delta_{k,m}
 \end{align*}
 
-To prove given statement we need to show that $n + \Delta_{k,m} \geq n + 1 \Rightarrow \Delta_{k,m} \geq 1$. If we take $m = k$ then:
-\[\frac{1}{k+1} + ... + \frac{1}{2k} \geq 2k \cdot \frac{1}{2k} = 1\]
+To prove given statement we need to show that $n + \Delta_{k,m} \geq n + 1 \Rightarrow \Delta_{k,m} \geq 1$. Let's prove last inequality by induction on $k$.
+
+\begin{align*}
+&IB.\:(k=1) \quad \frac{1}{2} + \frac{1}{3} + \frac{1}{4} \geq 1 \quad m = 4\\
+&IS. \quad \frac{1}{k+1} + \frac{1}{k+2} + ... + \frac{1}{k+m} + \frac{1}{k+m+1} \geq 1 + \frac{1}{k+m+1} \geq 1\\
+&\Rightarrow \Delta_{k,m} \geq 1\\
+&\Rightarrow 1 + \frac{1}{2} + ... + \frac{1}{k} + \Delta_{k,m} \geq n + 1
+\end{align*}
+
 
 \end{enumerate}
 

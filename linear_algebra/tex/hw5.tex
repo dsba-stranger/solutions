@@ -1,0 +1,166 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\usepackage{mathtools}
+
+\title{DSBA Linear Algebra HW5}
+\author{Kirill Korolev 203-1}
+\date{17th of October, 2020}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+
+\item Find the number of inversions in the following ordered line:
+
+\[(9,1,3,7,2,8,5,4,6)\]
+
+Inversion is such pair $(f(i), f(j))$ of permutation $f$ for which valid $i < j$ and $f(i) > f(j)$. Basically, for one-line notation number of inversions means number of non-sorted pairs in ascending order.
+
+Let's list these pairs for each number:
+
+\begin{description}
+\item 9: 1, 3, 7, 2, 8, 5, 4, 6
+\item 1: none
+\item 3: 2
+\item 7: 2, 5, 4, 6
+\item 2: none
+\item 8: 5, 4, 6
+\item 5: 4
+\item 4: none
+\item 6: none
+\end{description}
+
+Overall there are $8 + 1 + 4 + 3 + 1 = 17$ inversions.
+
+\item Let $f = \begin{pmatrix}2&3&5&1&4\\4&1&2&3&5\end{pmatrix}$ and $g = \begin{pmatrix}1&5&3&4&2\\5&4&1&2&3\end{pmatrix}$
+
+\begin{enumerate}
+\item cycle notation for $f$ and $g$
+
+Each permutation can be represented as product of independent cycles whereas a cycle is a list of $(a_1, a_2, ..., a_k)$ with mapping $a_1 \to a_2, a_2 \to a_3, ..., a_k \to a_1$.
+
+$f = (245)(13)$ and $g = (15423)$
+
+\item $f \circ g$ (using two-line notation)
+
+\[
+\begin{pmatrix}
+1&5&3&4&2\\
+5&4&1&2&3\\
+\hline
+5&4&1&2&3\\
+2&5&3&4&1
+\end{pmatrix}
+\Rightarrow f \circ g = 
+\begin{pmatrix}
+1&5&3&4&2\\
+2&5&3&4&1
+\end{pmatrix}
+\]
+
+\item $g \circ f$ (using two-line notation)
+
+\[
+\begin{pmatrix}
+2&3&5&1&4\\
+4&1&2&3&5\\
+\hline
+4&1&2&3&5\\
+2&5&3&1&4\\
+\end{pmatrix}
+\Rightarrow g \circ f = 
+\begin{pmatrix}
+2&3&5&1&4\\
+2&5&3&1&4
+\end{pmatrix}
+\]
+
+\item $f^{-1} \circ g^{-1}$
+
+Obtain inverse permutations by swapping rows in two-line notation:
+
+\begin{align*}
+&f^{-1}=
+\begin{pmatrix}
+4&1&2&3&5\\
+2&3&5&1&4
+\end{pmatrix}
+\quad g^{-1}=
+\begin{pmatrix}
+5&4&1&2&3\\
+1&5&3&4&2
+\end{pmatrix}\\
+&\begin{pmatrix}
+5&4&1&2&3\\
+1&5&3&4&2\\
+\hline
+1&5&3&4&2\\
+3&4&1&2&5
+\end{pmatrix}
+\Rightarrow f^{-1} \circ g^{-1} = 
+\begin{pmatrix}
+5&4&1&2&3\\
+3&4&1&2&5
+\end{pmatrix}
+\end{align*}
+
+\item $sgn(f)$
+
+Instead of calculating $sgn(f)$ by definition we can use the fact, which was proved on seminar, that $sgn(f) = (-1)^{n-d}$ where $n$ is the number of elements in permutation and $d$ is the number of independent cycles, therefore $sgn(f) = (-1)^{5-2} = -1$
+
+\item $sgn(g)$
+
+$sgn(g) = (-1)^{5-1} = 1$
+
+\item Verify that $sgn(f) \circ sgn(g) = sgn(f \circ g)$
+
+Remember that $f \circ g = \begin{pmatrix}
+1&5&3&4&2\\
+2&5&3&4&1
+\end{pmatrix}$ and we can factorize it on independent cycles like this: $f \circ g=(12)(5)(3)(4)$. Therefore $sgn(f \circ g) = (-1)^{5-4} = -1 = -1 \cdot 1 = sgn(f) \cdot sgn(g)$
+
+\end{enumerate}
+
+\item Let \[f =\begin{pmatrix}1&2&3&4&5&6&7\\4&5&7&1&3&2&6\end{pmatrix}\]
+\[g = 
+\begin{pmatrix}
+\begin{tabular}{ccccccccccccc}
+1&2&3&4&5&6&7&8&9&10&11&12&13\\
+8&11&7&12&9&1&6&3&2&13&5&4&10
+\end{tabular}
+\end{pmatrix}
+\]
+
+\begin{enumerate}
+\item Find $f^{2020}$
+
+Split $f$ on cycles $\Rightarrow f = (14)(25376)$, then:
+
+\[f^{2020} = (14)^{2020}(25376)^{2020}\]
+
+We can notice that $(14)^2=id_n$ and this will be valid for any even power $(14)^{2k} = id_n \Rightarrow (14)^{2020}=id_n$.
+
+Let's raise $(25376)$ to some powers and try to find out when we get identity permutation.  
+\[(25376)^2=(23657) \quad (25376)^3=(26735) \quad (25376)^4=(27563) \quad (25376)^5=(25376)\]
+So $x^5=x$, let's multiply both sides by $x^{-1}$ and get $x^4 = id_n \Rightarrow (25376)^4 = id_n$. 2020 is also divisible by 4, hence it is also an identity permutation. Combine everything together:
+\[f^{2020} = (14)^{2020}(25376)^{2020} = id_n \cdot id_n = id_n\]
+
+\item Find $g^{2077}$
+
+Split $g$ on cycles $\Rightarrow g = (18376)(2,11,5,9)(10,13)(4,12)$, then:
+
+\[g^{2077} = (18376)^{2077}(2,11,5,9)^{2077}(10,13)^{2077}(4,12)^{2077}\]
+
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

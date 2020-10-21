@@ -66,22 +66,16 @@ $f = (245)(13)$ and $g = (15423)$
 \end{pmatrix}
 \]
 
-\item $g \circ f$ (using two-line notation)
+\item $g \circ f$ (using cycle notation)
 
-\[
-\begin{pmatrix}
-2&3&5&1&4\\
-4&1&2&3&5\\
-\hline
-4&1&2&3&5\\
-2&5&3&1&4\\
-\end{pmatrix}
-\Rightarrow g \circ f = 
+\begin{align*}
+g \circ f = (15423)(245)(13) = (2)(4)(53)(1) \Rightarrow\\
+g \circ f = 
 \begin{pmatrix}
 2&3&5&1&4\\
 2&5&3&1&4
 \end{pmatrix}
-\]
+\end{align*}
 
 \item $f^{-1} \circ g^{-1}$
 
@@ -146,20 +140,35 @@ Split $f$ on cycles $\Rightarrow f = (14)(25376)$, then:
 
 \[f^{2020} = (14)^{2020}(25376)^{2020}\]
 
-We can notice that $(14)^2=id_n$ and this will be valid for any even power $(14)^{2k} = id_n \Rightarrow (14)^{2020}=id_n$.
-
-Let's raise $(25376)$ to some powers and try to find out when we get identity permutation.  
-\[(25376)^2=(23657) \quad (25376)^3=(26735) \quad (25376)^4=(27563) \quad (25376)^5=(25376)\]
-So $x^5=x$, let's multiply both sides by $x^{-1}$ and get $x^4 = id_n \Rightarrow (25376)^4 = id_n$. 2020 is also divisible by 4, hence it is also an identity permutation. Combine everything together:
-\[f^{2020} = (14)^{2020}(25376)^{2020} = id_n \cdot id_n = id_n\]
+Let's use the fact that the order of a cycle of length $n$, in other words the minimum power to raise a permutation to obtain an identity permutation, is also $n$. It is easy to see that we need to scroll a cycle $n$ times to get the same permutation. Therefore, $(14)^{2k}=id$ and $(25376)^{5k}=id$. 2020 is divisible by 2 and 5, hence after putting everything together:
+\[f^{2020} = (14)^{2020}(25376)^{2020} = id \cdot id = id\]
 
 \item Find $g^{2077}$
 
 Split $g$ on cycles $\Rightarrow g = (18376)(2,11,5,9)(10,13)(4,12)$, then:
 
-\[g^{2077} = (18376)^{2077}(2,11,5,9)^{2077}(10,13)^{2077}(4,12)^{2077}\]
+\begin{align*}
+&g^{2077} = (18376)^{2077}(2,11,5,9)^{2077}(10,13)^{2077}(4,12)^{2077}\\
+&2077\equiv2 (5) \quad 2077\equiv1 (4) \quad 2077\equiv1 (2) \Rightarrow\\
+&(18376)^{2077}(2,11,5,9)^{2077}(10,13)^{2077}(4,12)^{2077} = (18376)^{2}(2,11,5,9)(10,13)(4,12)=\\
+&(13687)(2,11,5,9)(10,13)(4,12)\\
+&g^{2077} = \begin{pmatrix}
+\begin{tabular}{ccccccccccccc}
+1&2&3&4&5&6&7&8&9&10&11&12&13\\
+3&11&6&12&9&8&1&7&2&13&5&4&10
+\end{tabular}
+\end{pmatrix}
+\end{align*}
 
 \end{enumerate}
+
+\item Find all $f \in S_{2020}$ such that
+\[f^2 = (1, 2, 3, ..., 2019, 2020)\]
+where $(1, 2, 3, ..., 2019, 2020)$ is a long cycle of length 2020.
+
+Let's denote this cycle as $\sigma_{2020}$ and use lemma about parity of composition: 
+\[sgn(f \circ g) = sgn(f) \circ sgn(g)\]
+We can see that there is no way to find such permutation $f$, because $sgn(\sigma_{2020}) = (-1)^{2020 - 1} = -1 \neq sgn^2(f)$
 
 \end{enumerate}
 

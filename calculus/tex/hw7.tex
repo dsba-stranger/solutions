@@ -1,0 +1,84 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{positioning}
+
+\title{DSBA Calculus HW7}
+\author{Kirill Korolev, 203-1}
+\date{22th of October, 2020}
+
+\begin{document}
+	
+\maketitle
+
+\begin{enumerate}
+\item Find following limits:
+
+\begin{align*}
+\text{(a)} \lim_{x \to +\infty} \bigg(\frac{x+1}{x+2}\bigg)^{1-x}=\lim_{x \to +\infty} \bigg(1 - \frac{1}{x+2}\bigg)^{(1-x) \cdot \frac{x+2}{x+2}} = \lim_{x \to +\infty} e^{\frac{x-1}{x+2}}
+\end{align*}
+
+As $e^x$ is a continuous function we can consider a limit of an argument:
+\begin{align*}
+\lim_{x \to +\infty} \frac{x-1}{x+2} = 1 \Rightarrow
+\lim_{x \to +\infty} \bigg(\frac{x+1}{x+2}\bigg)^{1-x} = e^1 = e
+\end{align*}
+
+\begin{align*}
+\text{(b)} &\lim_{x \to 0} \bigg(\frac{2-3x}{5-4x}\bigg)^{\frac{1}{x^2}} = 0\\
+&\bigg(\frac{2}{5}\bigg)^{\frac{1}{x^2}} \to 0 \quad x \to 0
+\end{align*}
+
+\begin{align*}
+\text{(c)} &\lim_{x \to 0} \bigg(\frac{1+2x}{1-3x}\bigg)^{\frac{3}{\sin{2x}}}=\lim_{x \to 0} \bigg(1+\frac{5x}{1-3x}\bigg)^{\frac{3}{\sin{2x}} \cdot \frac{5x}{1-3x} \cdot \frac{1-3x}{5x}} = \lim_{x \to 0} e^{\frac{3}{\sin{2x}}\frac{5x}{1-3x}}\\
+&\lim_{x \to 0} \frac{3}{\sin{2x}}\frac{5x}{1-3x} = \lim_{x \to 0} \frac{15}{2(1-3x)} = \frac{15}{2} \Rightarrow \lim_{x \to 0} \bigg(\frac{1+2x}{1-3x}\bigg)^{\frac{3}{\sin{2x}}} = e^{\frac{15}{2}}
+\end{align*}
+
+\item Compute if $a=0, a=1, a=+\infty$
+\begin{align*}
+\text{(a)} &\lim_{x \to 0} \bigg(\frac{1+x}{2+x}\bigg)^{\frac{1-\sqrt{x}}{1-x}} = \frac{1}{2} \quad (\text{By substitution of } x)
+\end{align*}
+
+\begin{align*}
+\text{(b)} &\lim_{x \to 1} \bigg(\frac{1+x}{2+x}\bigg)^{\frac{1-\sqrt{x}}{1-x}} = \lim_{x \to 1} \bigg(\frac{1+x}{2+x}\bigg)^{\frac{1}{1+\sqrt{x}}} = \sqrt{\frac{2}{3}} = \frac{\sqrt{6}}{3}
+\end{align*}
+
+
+\begin{align*}
+\text{(c)} &\lim_{x \to +\infty} \bigg(\frac{1+x}{2+x}\bigg)^{\frac{1-\sqrt{x}}{1-x}} = \lim_{x \to +\infty} \bigg(1 - \frac{1}{2+x}\bigg)^{\frac{1-\sqrt{x}}{1-x}}\\
+&\lim_{x \to +\infty} - \frac{1-\sqrt{x}}{(1-x)(2+x)} = \lim_{x \to +\infty} - \frac{1}{(1+\sqrt{x})(2+x)} = 0 \Rightarrow\\
+&\lim_{x \to +\infty} \bigg(\frac{1+x}{2+x}\bigg)^{\frac{1-\sqrt{x}}{1-x}} = e^0 = 1
+\end{align*}
+
+\item Find the following limits:
+\begin{align*}
+\text{(a)} &\lim_{x \to 0} \frac{\tan{4x}}{7^{3x}-1} = \lim_{x \to 0} \frac{4x}{3x\ln{7}} = \frac{4}{3\ln{7}}
+\end{align*}
+
+\begin{align*}
+\text{(b)} &\lim_{x \to 0} \frac{1-\cos{3x}}{x \cdot \arctan{8x}} = \lim_{x \to 0} \frac{9x^2}{2x \cdot \arctan{8x}} = \lim_{x \to 0} \frac{9x^2}{16x^2} = \frac{9}{16}
+\end{align*}
+
+\begin{align*}
+\text{(c)} &\lim_{x \to 0} \frac{\ln{(1-5x)}}{\sqrt[3]{7x+8}-2} = \frac{-5x}{2(\sqrt[3]{\frac{7}{8}x+1}-1)} = \frac{-5x}{2\frac{7}{3\cdot8}x} = -\frac{60}{7}
+\end{align*}
+
+\begin{align*}
+\text{(d)} &\lim_{x \to 0} \frac{\ln^3{(1+2x)}}{x(e^{x^2}-1)} = \lim_{x \to 0} \frac{8x^3}{x(e^{x^2}-1)} = \lim_{x \to 0} \frac{8x^2}{x^2} = 8 
+\end{align*}
+
+\begin{align*}
+\text{(e)} &\lim_{x \to 0} \frac{\arcsin{(\ln{(1+x)})}}{2x+x^2} = \lim_{x \to 0} \frac{x}{2x+x^2} = \lim_{x \to 0} \frac{1}{2 + x} = \frac{1}{2}\\
+&x \to 0 \Rightarrow \ln{(1+x)} \to 0 \Rightarrow \arcsin{(\ln{(1+x)})} \to 0
+\end{align*}
+
+\begin{align*}
+\text{(f)} &\lim_{x \to 0} \frac{8^x - 6^x}{x} = \lim_{x \to 0} \frac{8^x - 1 - (6^x - 1)}{x} = \lim_{x \to 0} \frac{x\ln{8} - x\ln{6}}{x} = \ln{\frac{4}{3}}
+\end{align*}
+
+\end{enumerate}
+
+\end{document}

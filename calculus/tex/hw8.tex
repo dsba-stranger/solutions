@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{positioning}
+
+\title{DSBA Calculus HW8}
+\author{Kirill Korolev, 203-1}
+\date{6th of November, 2020}
+
+\begin{document}
+	
+\maketitle
+
+\begin{enumerate}
+\item Find the points of discontinuity of the function and determine their types:
+\[f(x)=\frac{x^2+x}{|x|(x-1)}\]
+
+$x=0$ and $x=1$ are potential points of discontinuity. Let's check them:
+\begin{align*}
+&\lim_{x \to 0-} \frac{x^2+x}{|x|(x-1)}=\lim_{x \to 0-} \frac{x(x+1)}{-x(x-1)}=\lim_{x \to 0-} -\frac{x+1}{x-1}=1\\
+&\lim_{x \to 0+} \frac{x^2+x}{|x|(x-1)}=\lim_{x \to 0+} \frac{x(x+1)}{x(x-1)}=\lim_{x \to 0+} \frac{x+1}{x-1}=-1
+\end{align*}
+
+One-sided limits are not equal, therefore $x=0$ is a jump discontinuity.
+
+\begin{align*}
+&\lim_{x \to 1-} \frac{x^2+x}{|x|(x-1)}=\lim_{x \to 1-} \frac{x(x+1)}{x(x-1)}=\lim_{x \to 1-} \frac{x+1}{x-1}=-\infty\\
+&\lim_{x \to 1+} \frac{x^2+x}{|x|(x-1)}=\lim_{x \to 1+} \frac{x(x+1)}{x(x-1)}=\lim_{x \to 1+} \frac{x+1}{x-1}=+\infty
+\end{align*}
+
+Limit is equal to infinity, hence it is an essential discontinuity.
+
+\begin{align*}
+f(x)=
+\begin{cases}
+-\frac{4}{x-5}, \quad x \leq 1\\
+3x^2+5x-7, \quad 1 < x \leq 9\\
+\frac{9}{x-9}, \quad x > 9
+\end{cases}
+\end{align*}
+
+We don't consider $x=5$ in $-\frac{4}{x-5}$ because it doesn't lie in its domain.
+
+\begin{align*}
+&\lim_{x \to 1-} -\frac{4}{x-5} = 1\\
+&\lim_{x \to 1+} 3x^2+5x-7=1
+\end{align*}
+
+One-sided limits are equal, therefore $f(x) \in C(1)$.
+
+\begin{align*}
+&\lim_{x \to 9-} 3x^2+5x-7 = 281\\
+&\lim_{x \to 9+} \frac{9}{x-9}=+\infty
+\end{align*}
+
+When $x \to 9+$, then $f(x) \to +\infty$, hence $x=9$ is an essential discontinuity.
+
+\item For which value of $k$ will the function $f(x) = \frac{x^2-(k-2)x+8}{x-k}$ have a removable discontinuity at $x=k$?
+
+Removal discontinuity at $x=x_0$ means that $\exists \lim_{x \to x_0} f(x) \neq f(x_0)$ and the limit is finite.
+
+Let's divide the numerator by $x-k$ with remainder:
+\[x^2-(k-2)x+8 = (x + 2)(x - k) + 2k+8\]
+
+Then the limit:
+\begin{align*}
+\lim_{x \to k} \frac{x^2-(k-2)x+8}{x-k} = \lim_{x \to k}\bigg(x + 2 + \frac{2k+8}{x-k}\bigg)
+\end{align*}
+
+If $k=-4$ then the limit is finite and equal to $\lim_{x \to -4}(x + 2 + \frac{0}{x + 4})=-2$ and $f(-4)$ is undefined, therefore $f(x)$ has a removable discontinuity at $x=k$ for $k=-4$.
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\usepackage{mathtools}
+
+\title{DSBA Linear Algebra HW6}
+\author{Kirill Korolev 203-1}
+\date{9th of November, 2020}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+
+\item Solve the following system using Cramer’s rule:
+
+\begin{align*}
+\begin{cases}
+\lambda x + 3y=\lambda - 2\\
+3x+\lambda y=1
+\end{cases}
+\end{align*}
+
+\begin{align*}
+\Delta = \begin{vmatrix}
+\lambda & 3\\
+3 & \lambda
+\end{vmatrix}=\lambda^2-9 \quad
+\Delta_1 = \begin{vmatrix}
+\lambda - 2 & 3\\
+1 & \lambda
+\end{vmatrix}=\lambda^2-2\lambda-3 \quad
+\Delta_2 = \begin{vmatrix}
+\lambda & \lambda-2\\
+3 & 1
+\end{vmatrix}=-2\lambda+6
+\end{align*}
+
+\begin{align*}
+x = \frac{\Delta_1}{\Delta} = \frac{\lambda^2-2\lambda-3}{\lambda^2-9}=\frac{(\lambda-3)(\lambda+1)}{(\lambda-3)(\lambda+3)}=\frac{\lambda+1}{\lambda+3}
+\end{align*}
+
+\begin{align*}
+y = \frac{\Delta_2}{\Delta} = \frac{-2\lambda+6}{\lambda^2-9}=\frac{-2(\lambda-3)}{(\lambda-3)(\lambda+3)}=-\frac{2}{\lambda+3}
+\end{align*}
+
+\end{enumerate}
+
+\end{document}

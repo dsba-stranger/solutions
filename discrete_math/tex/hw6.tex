@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\usepackage{mathtools}
+\usepackage[legalpaper,margin=1in]{geometry}
+
+\title{DSBA Discrete Mathematics HW6}
+\author{Kirill Korolev 203-1}
+\date{30th of October, 2020}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\item Suppose that each of the digits 0, 1, and 2 has exactly 100 occurrences in the decimal notation of a
+certain integer $x$. No other digit occurs there. Prove there is no such integer $y$ that $x=y^2$.
+
+$x = \overline{x_{300}x_{299}\ldots{}x_2x_1} \quad x_i \in \{0,1,2\}$
+
+Then if we sum up all the digits of $x$ we get $100 \cdot 0 + 100 \cdot 1 + 100 \cdot 2 = 300 \equiv 0 (3) \Rightarrow 3 \mid x$. 
+
+Suppose $y=\overline{y_my_{m-1}\ldots{}y_1y_0}=10^{m}y_m + 10^{m-1}y_{m-1} + \cdots{} + 10y_1 + y_0 \Rightarrow$
+
+\begin{align*}
+&y^2 \equiv (10^{m}y_m + 10^{m-1}y_{m-1} + \cdots{} + 10y_1 + y_0)^2 \equiv\\
+&\equiv (y_m + y_{m-1} + \ldots{} + y_1 + y_0)^2 \not \equiv 0(3)
+\end{align*}
+
+Because either $y_i = 0 \Rightarrow y = 0$ or $(y_m + y_{m-1} + \ldots{} + y_1 + y_0)^2 = 3k$, which is obviously not the case because there is no such integer which gives $3$ being squared.
+
+\item Prove that there are infinitely many primes of the form $6k + 5$.
+
+Suppose there are finite number of prime numbers of the form $6k + 5$. Let $P = (p_1, p_2, \ldots{}, p_m)$ would be the set of such primes. Notice that $6k, 6k+2, 6k+4$ cannot be primes because these numbers would be even. So, only $6k+1$ and $6k + 3$ are left except $6k+5$. 
+
+Let's choose $N = p_1p_2\ldots{}p_m - 1 = 6(p_1p_2\ldots{}p_m - 1)+5=6k+5$. If $N$ is prime then it has to be in P because $N=6k+5$, but it is not, therefore $N$ is composite. 
+
+If the divisors are only of the form $6k + 1$, then the product would be also in this form:
+ 
+\[(6k+1)(6k+1)=6(6k^2+2k)+1=6k^\prime+1\]
+
+The same holds for divisors $6k+3$:
+
+\[(6k+3)(6k+3)=6(6k^2+6k)+9=6(6k^2+6k+1)+3=6k^\prime+3\]
+
+And for any combination of those:
+\[(6k+3)(6k+1)=6(6k^2+4k)+3\]
+
+Assuming that there must be at least one divisor $6k+5=p_i \in P$ of $N$. This divisor must be prime because $p_i < N$. Because of the construction of $N$ $p_i \mid p_1p_2\ldots{}p_m$. But then $p_i \mid 1 \Rightarrow p_i = 1$ which leads to contradiction.
+
+
+\end{enumerate}
+
+\end{document}

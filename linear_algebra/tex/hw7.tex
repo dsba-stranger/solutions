@@ -50,6 +50,65 @@ x = \frac{\Delta_1}{\Delta} = \frac{\lambda^2-2\lambda-3}{\lambda^2-9}=\frac{(\l
 y = \frac{\Delta_2}{\Delta} = \frac{-2\lambda+6}{\lambda^2-9}=\frac{-2(\lambda-3)}{(\lambda-3)(\lambda+3)}=-\frac{2}{\lambda+3}
 \end{align*}
 
+//TODO
+
+\newpage
+\item Solve the following system using Cramer’s rule:
+\begin{align*}
+\begin{cases}
+x+y+2z=-1\\
+2x-y+2z=3\\
+4x+y+4z=-3
+\end{cases}
+\end{align*}
+
+\begin{align*}
+\Delta &= \begin{vmatrix}
+1&1&2\\
+2&-1&2\\
+4&1&4
+\end{vmatrix}=\begin{vmatrix}
+1&1&2\\
+0&-3&-2\\
+0&-3&-4
+\end{vmatrix}=6\\
+\Delta_1 &= \begin{vmatrix}
+-1&1&2\\
+3&-1&2\\
+-3&1&4
+\end{vmatrix}=\begin{vmatrix}
+-1&1&2\\
+0&2&8\\
+0&-2&-2
+\end{vmatrix}=-12\\
+\Delta_2 &= \begin{vmatrix}
+1&-1&2\\
+2&3&2\\
+4&-3&4
+\end{vmatrix}=\begin{vmatrix}
+1&-1&2\\
+0&5&-2\\
+0&1&-4
+\end{vmatrix}=-18\\
+\Delta_3 &= \begin{vmatrix}
+1&1&-1\\
+2&-1&3\\
+4&1&-3
+\end{vmatrix}=\begin{vmatrix}
+1&1&-1\\
+0&-3&5\\
+0&-3&1
+\end{vmatrix}=12
+\end{align*}
+
+\begin{align*}
+\begin{cases}
+x=\frac{\Delta_1}{\Delta}=-\frac{12}{6}=-2\\
+y=\frac{\Delta_2}{\Delta}=-\frac{18}{6}=-3\\
+z=\frac{\Delta_3}{\Delta}=\frac{12}{6}=2
+\end{cases}
+\end{align*}
+
 \end{enumerate}
 
 \end{document}

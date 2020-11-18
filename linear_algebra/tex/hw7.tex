@@ -2,9 +2,9 @@
 \usepackage{amsmath, amssymb}
 \usepackage{mathtools}
 
-\title{DSBA Linear Algebra HW6}
+\title{DSBA Linear Algebra HW7}
 \author{Kirill Korolev 203-1}
-\date{9th of November, 2020}
+\date{15th of November, 2020}
 
 \makeatletter
 \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
@@ -43,14 +43,35 @@
 \end{align*}
 
 \begin{align*}
-x = \frac{\Delta_1}{\Delta} = \frac{\lambda^2-2\lambda-3}{\lambda^2-9}=\frac{(\lambda-3)(\lambda+1)}{(\lambda-3)(\lambda+3)}=\frac{\lambda+1}{\lambda+3}
+x = \frac{\Delta_1}{\Delta} = \frac{\lambda^2-2\lambda-3}{\lambda^2-9}=\frac{(\lambda-3)(\lambda+1)}{(\lambda-3)(\lambda+3)}
 \end{align*}
 
 \begin{align*}
-y = \frac{\Delta_2}{\Delta} = \frac{-2\lambda+6}{\lambda^2-9}=\frac{-2(\lambda-3)}{(\lambda-3)(\lambda+3)}=-\frac{2}{\lambda+3}
+y = \frac{\Delta_2}{\Delta} = \frac{-2\lambda+6}{\lambda^2-9}=\frac{-2(\lambda-3)}{(\lambda-3)(\lambda+3)}
 \end{align*}
 
-//TODO
+\begin{enumerate}
+\item $\lambda = -3$
+
+There are no solutions, because in this case $\Delta = 0$ and $\Delta_i \neq 0, \forall i$. Precisely, we have a contradiction $\Delta \cdot x_i = 0 \cdot x_i \neq \Delta_i$.
+\item $\lambda = 3$
+
+In this case there are infinitely many solutions, because there is one equation with two variables.
+\begin{align*}
+\begin{cases}
+3x + 3y=1\\
+3x+3y=1
+\end{cases} \iff 3x + 3y=1 \iff x = \frac{1}{3} - y, \quad y \in \mathbb{R}
+\end{align*}
+
+\item In other cases there is a unique solution.
+\begin{align*}
+x =\frac{\lambda+1}{\lambda+3}\\
+y = -\frac{2}{\lambda+3}
+\end{align*}
+
+
+\end{enumerate}
 
 \newpage
 \item Solve the following system using Cramer’s rule:
@@ -108,6 +129,26 @@ y=\frac{\Delta_2}{\Delta}=-\frac{18}{6}=-3\\
 z=\frac{\Delta_3}{\Delta}=\frac{12}{6}=2
 \end{cases}
 \end{align*}
+
+\item Let $a$, $b$ and $c$ be real numbers. Then, without resorting to a direct calculation (Sarrus’ Rule is
+a direct calculation!), find the value of the following determinant of matrix $X$.
+
+\begin{align*}
+|X|=\begin{vmatrix}
+3&a+b+c&a^2+b^2+c^2\\
+a+b+c&a^2+b^2+c^2&a^3+b^3+c^3\\
+a^2+b^2+c^2&a^3+b^3+c^3&a^4+b^4+c^4
+\end{vmatrix}
+\end{align*}
+
+Let A = $\begin{bmatrix}
+1&a&a^2\\
+1&b&b^2\\
+1&c&c^2
+\end{bmatrix}$. Then evidently $A^T \cdot A = X$. 
+
+By \textbf{theorem 7.2} $|X|=|A^T|\cdot|A|$. Determinant of the Vandermonde matrix $A$ equals to $(b-a)(c-a)(c-b)$. But $|A^T|=|A|$, hence 
+\[|X|=(b-a)^2(c-a)^2(c-b)^2\]
 
 \end{enumerate}
 

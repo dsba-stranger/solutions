@@ -1,0 +1,144 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\usepackage{mathtools}
+\usepackage[legalpaper,margin=1in]{geometry}
+
+\newcommand{\dropsign}[1]{\smash{\llap{\raisebox{-.5\normalbaselineskip}{$#1$\hspace{2\arraycolsep}}}}}%
+	
+\title{DSBA Discrete Mathematics HW7}
+\author{Kirill Korolev 203-1}
+\date{17th of November, 2020}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\setcounter{enumi}{11}
+
+\item Prove that for any positive numbers $x, y, z$ the following statement is valid with the use of associativity of $lcm(a,b,c)=lcm(a,(b,c))$ and $gcd(a,b,c)=gcd(a,gcd(b,c))$.
+\[lcm(x,y,z)=\frac{xyz \cdot gcd(x,y,z)}{gcd(x,y) \cdot gcd(x,z) \cdot gcd(y,z)}\]
+\newline
+
+Suppose there are canonical factorizations of $x, y, z$.
+\begin{align*}
+x=p_1^{\alpha_1}\ldots{}p_k^{\alpha_k}\\
+y=p_1^{\beta_1}\ldots{}p_k^{\beta_k}\\
+z=p_1^{\gamma_1}\ldots{}p_k^{\gamma_k}\\
+\end{align*}
+
+Also, we know formulas for $lcm$ and $gcd$ in these representations.
+\begin{align*}
+lcm(x,y)=p_1^{max(\alpha_1,\beta_1)}\ldots{}p_k^{max(\alpha_k,\beta_k)}\\
+gcd(x,y)=p_1^{min(\alpha_1,\beta_1)}\ldots{}p_k^{min(\alpha_k,\beta_k)}
+\end{align*}
+
+For three arguments obviously $max$ or $min$ will be taken among all of them, like $max(\alpha_i,\beta_i,\gamma_i)$. Then the right-hand part of the statement will look like this.
+\begin{align*}
+\frac{p_1^{\alpha_1}\ldots{}p_k^{\alpha_k}p_1^{\beta_1}\ldots{}p_k^{\beta_k}p_1^{\gamma_1}\ldots{}p_k^{\gamma_k}p_1^{min(\alpha_1,\beta_1,\gamma_1)}\ldots{}p_k^{min(\alpha_k,\beta_k,\gamma_k)}}{p_1^{min(\alpha_1,\beta_1)}\ldots{}p_k^{min(\alpha_k,\beta_k)}p_1^{min(\alpha_1,\gamma_1)}\ldots{}p_k^{min(\alpha_k,\gamma_k)}p_1^{min(\beta_1,\gamma_1)}\ldots{}p_k^{min(\beta_k,\gamma_k)}}
+\end{align*}
+
+Let's take some arbitrary $i \in [k]$ and w.l.o.g $\alpha_i < \beta_i < \gamma_i$. Then let's take a look of the following part of the fraction.
+\begin{align*}
+\frac{p_i^{\alpha_i}p_i^{\beta_i}p_i^{\gamma_i}p_i^{min(\alpha_i,\beta_i,\gamma_i)}}{p_i^{min(\alpha_i,\beta_i)}p_i^{min(\alpha_i,\gamma_i)}p_i^{min(\beta_i,\gamma_i)}}=\frac{p_i^{\alpha_i}p_i^{\beta_i}p_i^{\gamma_i}p_i^{\alpha_i}}{p_i^{\alpha_i}p_i^{\alpha_i}p_i^{\beta_i}}=p_i^{\gamma_i}=p_i^{max(\alpha_i,\beta_i,\gamma_i)}
+\end{align*}
+Overall, this is valid for each $i \in [k]$ leading us to $lcm(x,y,z)$. So, the statement is proved.
+
+\item Let p be a prime greater than 3. Prove that $24 \mid (p^2-1)$.
+\newline
+ 
+First of all, $24 = 2^3\cdot3$. Also, we know that $p^2-1=(p-1)(p+1)$. 
+
+Notice that $p$ is greater than $3$, so $p$ being prime cannot give remainder $0$ by modulo $3$. 
+
+Then there are two cases: $p \equiv 1(3)$ or $p \equiv 2(3) \equiv -1 (3)$, which exactly mean that $3 \mid (p-1)$ or $3 \mid (p+1)$. Now let's figure out whether $2^3 \mid (p-1)(p+1)$.
+
+If $d \mid (p-1)$ and $d \mid (p+1)$, then $d \mid ((p+1) - (p-1)) = 2$. Therefore $d=2$ and $gcd(p-1,p+1)=2$. So, we can divide $(p-1)(p+1)$ by $2$. Now we left with $2^2=4$. Once again $p$ is not divisible by $4$ by our assumptions and $p \not\equiv 2 (4)$, because then $p=2+4t, t \in \mathbb{N}$, which means $p$ is even. Contradiction.
+
+Therefore, $p \equiv 1(4)$ or $p \equiv 3(4) \equiv -1 (4)$, meaning that $4 \mid (p-1)$ or $4 \mid (p+1)$. So, the statement is proved.
+
+\item Prove that there is no arithmetic progression $\{a_k\}_{k \in \mathbb{N}}$ (whose difference is non-zero) s. t. the numbers $a_1, a_2, \ldots{}, a_n$ are pairwise coprime for each $n > 0$. 
+\newline
+
+To prove this statement it is sufficient to find such $n$ that not all numbers $a_1, a_2, \ldots{}, a_n$ are pairwise coprime. Recall formula for $k$th element of arithmetic progression.
+\begin{align*}
+a_k=a_1+d(k-1), \quad k \in \mathbb{N}, \quad d \in \mathbb{Z}\backslash \{0\}
+\end{align*}
+
+Let's take $k-1=|a_1|$, then $gcd(a_1, a_k)=gcd(a_1, a_1 + d(k-1))=gcd(a_1, a_1+d|a_1|)$.
+
+By the known property $gcd(ma,mb)=m \cdot gcd(a,b)$. 
+
+\begin{align*}
+&a_1 \geq 0, \quad gcd(a_1, a_1+d|a_1|)=gcd(a_1, a_1(1+d))=a_1 \cdot gcd(1, 1 + d) = a_1(1+d) \neq 1\\
+&a_1 < 0, \quad gcd(a_1, a_1+d|a_1|)=gcd(a_1, a_1(1-d))=a_1 \cdot gcd(1, 1-d)=a_1(1-d) \neq 1
+\end{align*}
+
+So, for instance, for $n=|a_1|+1$ not all numbers are pairwise coprime.
+
+\item Prove that the fraction $\frac{n^2-n+1}{n^2+1}$ is irreducible for each integer $n>0$.
+\newline
+
+Basically, we need to prove that $gcd(n^2+1,n^2-n+1)=1$. Let's use the Euclidean algorithm to find this value. It will be first non-zero remainder.
+
+\begin{align*}
+&n^2+1=(n^2-n+1)1 + n, \quad n < n^2-n+1 \iff 0 < (n-1)^2 \iff n > 1\\
+&n^2-n+1=n(n-1)+1, \quad 1 < n\\
+&n = 1 \cdot n + 0
+\end{align*}
+
+If $n>1$ we've proved that $gcd(n^2+1,n^2-n+1)=1$. If $n=1$, $\frac{n^2-n+1}{n^2+1}=\frac{1}{2}$, which is obviously irreducible. Statement is proved.
+
+\item //TODO
+
+\item If $a^{10} + b^{10} + c^{10} + d^{10} + e^{10} + f^{10}$ is divisible by $11$, then $abcdef$ is divisible by $11^6$.
+
+Let's take any number from these $6$, w.l.o.g let it be $a$. If $11 \nmid a$, then by Fermat's Little Theorem $a^{10} \equiv 1(11)$, because $11$ is a prime number. Otherwise $a=11m, m \in \mathbb{Z}$, which means $a\equiv 0 (11)$. So, if all numbers are not divisible by 11, then we'll get only 6 modulo 11 if we sum up $a^{10} + \ldots + f^{10} \not\equiv 0 (11)$. In other cases the sum will be even smaller. Therefore, all numbers should be divisible by $11$. Afterwards, we can divide each number by 11 from $\frac{abcdef}{11^6}$, meaning that the statement has been proved.
+
+\item Solve the equation $19x+22y=-21$ in integer numbers.
+\newline
+
+We know that $19u+22v=gcd(19,22)$. Let's use the Extended Euclidean Algorithm to find such $u$ and $v$.
+\begin{align*}
+&19=22\cdot0+19\\
+&22=19\cdot1+3\\
+&19=3\cdot6+1\\
+&3=1\cdot3+0
+\end{align*}
+After getting $q_1=0, q_2=1, q_3=6$ let's calculate $u_4, v_4$ with the following formulas:
+
+\begin{align*}
+u_{k+2}=u_k-u_{k+1}q_{k+1}\\
+v_{k+2}=v_k-v_{k+1}q_{k+1}\\
+\end{align*}
+
+Initialize $u_0=1,v_0=0,u_1=0,v_1=1$ and proceed.
+
+\begin{align*}
+u_2=u_0-u_1q_1=1-0=1\\
+v_2=v_0-v_1q_1=0-0=0\\
+u_3=u_1-u_2q_2=0-1=-1\\
+v_3=v_1-v_2q_2=1-0=1\\
+u_4=u_2-u_3q_3=1-(-1)6=7\\
+v_4=v_2-v_3q_3=0-1(6)=-6\\
+\end{align*}
+
+Indeed $19\cdot7-22\cdot6=gcd(19,22)=1$. Definitely $1 \mid -21$, so there exists solutions.
+//TODO
+
+\item //TODO
+\item //TODO
+\item Find a way to compute the number $gcd(3^{168}-1,3^{140}-1)$ without using a calculator and compute this number actually.
+\newline
+
+Let's use the Euclidean Algorithm to find this number.
+\begin{align*}
+3^{168}-1=(3^{140}-1)3^{28}+(3^{28}-1)\\
+3^{140}-1=(3^{28}-1)\\
+\end{align*}
+
+//TODO
+
+\item //TODO
+\end{enumerate}
+
+\end{document}
